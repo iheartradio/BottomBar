@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class ThreeTabsActivity extends Activity {
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelected(@IdRes int tabId) {
+                Log.d("ThreeTabsActivity", "TabSelected :"+tabId);
                 messageView.setText(TabMessage.get(tabId, false));
             }
         });
@@ -35,8 +37,11 @@ public class ThreeTabsActivity extends Activity {
         bottomBar.setOnTabReselectListener(new OnTabReselectListener() {
             @Override
             public void onTabReSelected(@IdRes int tabId) {
+                Log.d("ThreeTabsActivity", "TabReSelected :"+tabId);
                 Toast.makeText(getApplicationContext(), TabMessage.get(tabId, true), Toast.LENGTH_LONG).show();
             }
         });
+
+        bottomBar.highlightTabWithId(R.id.tab_friends);
     }
 }
