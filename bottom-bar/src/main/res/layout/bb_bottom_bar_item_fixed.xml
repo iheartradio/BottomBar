@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.v7.widget.AppCompatImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bb_bottom_bar_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"/>
+        android:layout_gravity="top|center_horizontal"
+        app:lottie_loop="false" />
 
     <TextView
         android:id="@+id/bb_bottom_bar_title"
@@ -14,6 +16,6 @@
         android:layout_gravity="bottom|center_horizontal"
         android:textAppearance="@style/BB_BottomBarItem_Fixed.TitleAppearance"
         android:visibility="gone"
-        style="@style/BB_BottomBarItem_TitleStyle"/>
+        style="@style/BB_BottomBarItem_TitleStyle" />
 
 </merge>

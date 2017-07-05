@@ -14,11 +14,12 @@ import android.support.annotation.NonNull;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
-import android.support.v7.widget.AppCompatImageView;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 /*
  * BottomBar library for Android
@@ -64,7 +65,7 @@ public class BottomBarTab extends LinearLayout {
     private int barColorWhenSelected;
     private int badgeBackgroundColor;
     private boolean badgeHidesWhenActive;
-    private AppCompatImageView iconView;
+    private LottieAnimationView iconView;
     private TextView titleView;
     private boolean isActive;
     private int indexInContainer;
@@ -98,7 +99,7 @@ public class BottomBarTab extends LinearLayout {
         setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
         setBackgroundResource(MiscUtils.getDrawableRes(getContext(), R.attr.selectableItemBackgroundBorderless));
 
-        iconView = (AppCompatImageView) findViewById(R.id.bb_bottom_bar_icon);
+        iconView = (LottieAnimationView) findViewById(R.id.bb_bottom_bar_icon);
         iconView.setImageResource(iconResId);
 
         if (type != Type.TABLET && !isTitleless) {
@@ -189,7 +190,7 @@ public class BottomBarTab extends LinearLayout {
         return (ViewGroup) getParent();
     }
 
-    AppCompatImageView getIconView() {
+    LottieAnimationView getIconView() {
         return iconView;
     }
 
