@@ -164,6 +164,38 @@ public class BottomBarTab extends LinearLayout {
         }
     }
 
+    public void setAnimation(final String lottieAnimation) {
+        iconView.setAnimation(lottieAnimation);
+    }
+
+    public void playAnimation() {
+        iconView.playAnimation();
+    }
+
+    public void loopAnimation(final boolean loop) {
+        iconView.loop(loop);
+    }
+
+    public void cancelAnimation() {
+        iconView.cancelAnimation();
+    }
+
+    public void addAnimationListener(final Animator.AnimatorListener animationListener) {
+        iconView.addAnimatorListener(animationListener);
+    }
+
+    public void removeAnimationListener(final Animator.AnimatorListener animationListener) {
+        iconView.removeAnimatorListener(animationListener);
+    }
+
+    public void addAnimationUpdateListener(final ValueAnimator.AnimatorUpdateListener updateListener) {
+        iconView.addAnimatorUpdateListener(updateListener);
+    }
+
+    public void removeAnimationUpdateListener(final ValueAnimator.AnimatorUpdateListener updateListener) {
+        iconView.removeUpdateListener(updateListener);
+    }
+
     Type getType() {
         return type;
     }
