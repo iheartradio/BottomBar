@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.kt3k.coveralls'
+apply plugin: 'maven-publish'
 
 ext {
     bintrayRepo = 'maven'
@@ -14,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/roughike/BottomBar'
     gitUrl = 'https://github.com/roughike/BottomBar.git'
 
-    libraryVersion = '2.3.1'
+    libraryVersion = '2.3.2.ihr'
 
     developerId = 'roughike'
     developerName = 'Iiro Krankka'
@@ -172,6 +173,26 @@ if (localProps.exists()) {
                     passphrase = properties.getProperty("bintray.gpg.password")
                     //Optional. The passphrase for GPG signing'
                 }
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            artifact "${project.buildDir}/outputs/aar/${project.name}-release.aar"
+            groupId publishedGroupId
+            artifactId artifact
+        }
+    }
+
+    repositories {
+        maven {
+            url "http://iheart.artifactoryonline.com/iheart/external"
+            credentials {
+                username artifactoryUsername
+                password artifactoryPassword
             }
         }
     }

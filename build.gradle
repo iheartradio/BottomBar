@@ -18,6 +18,51 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenLocal()
+        maven {
+            name "android-m2"
+            url "file://$System.env.ANDROID_HOME/extras/android/m2repository"
+        }
+        maven {
+            name "google-m2"
+            url "file://$System.env.ANDROID_HOME/extras/google/m2repository"
+        }
+        'iHeart\'s repo for external libs and 3rd party mirrors'
+        maven {
+            name "iheartExternals"
+            url "http://iheart.artifactoryonline.com/iheart/externals/"
+            credentials {
+                username artifactoryUsername
+                password artifactoryPassword
+            }
+        }
+        'iHeart\'s repo for internal libs, like IHRCP and Commons'
+        maven {
+            name "iheartInternal"
+            url "http://iheart.artifactoryonline.com/iheart/internal/"
+            credentials {
+                username artifactoryUsername
+                password artifactoryPassword
+            }
+        }
+
+        maven {
+            name "snapshot"
+            url "http://iheart.artifactoryonline.com/iheart/snapshot/"
+            credentials {
+                username artifactoryUsername
+                password artifactoryPassword
+            }
+        }
+        maven {
+            url 'https://maven.fabric.io/public'
+        }
+        maven {
+            url 'http://maven.localytics.com/public'
+        }
+        maven {
+            url 'https://github.com/uPhyca/stetho-realm/raw/master/maven-repo'
+        }
     }
 }
 
