@@ -6,8 +6,8 @@
         title="Favorites" />
     <tab
         id="@+id/tab_nearby"
-        icon="@drawable/ic_nearby"
-        title="Nearby" />
+        icon="@drawable/ic_library"
+        title="Favorites" />
     <tab
         id="@+id/tab_friends"
         icon="@drawable/ic_friends"

@@ -10,7 +10,6 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/bb_bottom_bar_icon"
-        style="@style/BB_BottomBarItem_Tablet"
-        app:lottie_loop="false" />
+        style="@style/BB_BottomBarItem_Tablet" />
 
 </FrameLayout>

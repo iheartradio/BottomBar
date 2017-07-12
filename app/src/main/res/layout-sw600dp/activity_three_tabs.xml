@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bb_darkBackgroundColor">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieView"
+        android:layout_width="32dp"
+        android:layout_height="32dp" />
 
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        app:bb_tabXmlResource="@xml/bottombar_tabs_three"
-        app:bb_tabletMode="true" />
-
-    <TextView
-        android:id="@+id/messageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@+id/bottomBar"
-        android:layout_toEndOf="@+id/bottomBar"
-        android:gravity="center"
-        android:text="Hi mom!" />
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:bb_activeTabColor="@android:color/white"
+        app:bb_inActiveTabAlpha="0.4"
+        app:bb_inActiveTabColor="@android:color/white"
+        app:bb_tabXmlResource="@xml/bottombar_tabs_three"
+        android:background="@color/bb_darkBackgroundColor"/>
 
 </RelativeLayout>
