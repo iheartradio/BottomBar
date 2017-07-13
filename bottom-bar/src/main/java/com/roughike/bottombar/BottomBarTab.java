@@ -164,33 +164,27 @@ public class BottomBarTab extends LinearLayout {
         }
     }
 
-    public void setAnimation(final String lottieAnimation) {
+    public void setAnimation(final String lottieAnimation, final int topMargin, final int bottomMargin) {
         iconView.setAnimation(lottieAnimation);
         LinearLayout.LayoutParams params = (LayoutParams) iconView.getLayoutParams();
-        params.setMargins(0, -14, 0, -3);
+        params.setMargins(0, topMargin, 0, bottomMargin);
     }
 
-    public void setImageResource(final int imageRes) {
-        iconView.setImageResource(imageRes);
-    }
-
-//    public void playAnimation() {
-//        iconView.playAnimation();
-//    }
-
-    public void playAnimation() {
+    public void playAnimation(final boolean highlight) {
         iconView.addAnimatorListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(final Animator animation) {
-                LinearLayout.LayoutParams params = (LayoutParams) iconView.getLayoutParams();
-                params.setMargins(0, 0, 0, 0);
-                //iconView.setImageResource(imageRes);
+            if (highlight) {
                 setAlphas(inActiveAlpha);
             }
+            }
         });
-        //setAnimation(lottieAnimation);
+
         iconView.playAnimation();
-        setAlphas(activeAlpha);
+
+        if (highlight) {
+            setAlphas(activeAlpha);
+        }
     }
 
     public void loopAnimation(final boolean loop) {

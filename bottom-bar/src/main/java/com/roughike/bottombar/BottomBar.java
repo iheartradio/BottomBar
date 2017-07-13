@@ -543,6 +543,15 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         selectTabAtPosition(position, false);
     }
 
+    public void highlightTabWithId(@IdRes int tabResId) {
+        int tabPosition = this.findPositionForTabWithId(tabResId);
+        this.selectTabAtPosition(tabPosition, false, true);
+    }
+
+    public void highlightTabAtPosition(int position) {
+        this.selectTabAtPosition(position, false, true);
+    }
+
     public void selectOnlyWithId(@IdRes final int tabResId) {
         final int tabPosition = findPositionForTabWithId(tabResId);
         selectTabAtPosition(tabPosition, false, true);

@@ -33,7 +33,7 @@ public class ThreeTabsActivity extends Activity {
             @Override
             public void onTabSelected(@IdRes int tabId) {
                 //messageView.setText(TabMessage.get(tabId, false));
-                bottomBar.getTabAtPosition(0).playAnimation();
+                bottomBar.getTabAtPosition(0).playAnimation(true);
             }
         });
 
@@ -44,12 +44,11 @@ public class ThreeTabsActivity extends Activity {
                 //animate(bottomBar);
             }
         });
-        bottomBar.getTabAtPosition(0).setAnimation("TwitterHeart.json");
+        bottomBar.getTabAtPosition(0).setAnimation("TwitterHeart.json", -15, -2);
         bottomBar.getTabAtPosition(0).loopAnimation(false);
     }
 
     private void animate(final BottomBar bottomBar) {
-
         //bottomBar.getTabAtPosition(0).playAnimation("", 3);
     }
 }
