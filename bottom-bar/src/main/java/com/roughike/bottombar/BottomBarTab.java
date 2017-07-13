@@ -170,22 +170,31 @@ public class BottomBarTab extends LinearLayout {
         params.setMargins(0, topMargin, 0, bottomMargin);
     }
 
-    public void playAnimation(final boolean highlight) {
-        iconView.addAnimatorListener(new AnimatorListenerAdapter() {
+    public interface OnHighlightTabListener {
+        boolean highlight();
+    }
+
+    public void playAnimation(final OnHighlightTabListener highlight) {
+
+        final AnimatorListenerAdapter listenerAdapter = new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(final Animator animation) {
-            if (highlight) {
-                setAlphas(inActiveAlpha);
+                if (highlight.highlight()) {
+                    setAlphas(inActiveAlpha);
+                }
+                iconView.removeAnimatorListener(this);
             }
-            }
-        });
+        };
+
+        iconView.addAnimatorListener(listenerAdapter);
 
         iconView.playAnimation();
 
-        if (highlight) {
+        if (highlight.highlight()) {
             setAlphas(activeAlpha);
         }
     }
+
 
     public void loopAnimation(final boolean loop) {
         iconView.loop(loop);
