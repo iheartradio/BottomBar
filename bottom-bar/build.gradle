@@ -15,7 +15,7 @@ ext {
     siteUrl = 'https://github.com/roughike/BottomBar'
     gitUrl = 'https://github.com/roughike/BottomBar.git'
 
-    libraryVersion = '2.3.2.ihr'
+    libraryVersion = '2.3.9.ihr'
 
     developerId = 'roughike'
     developerName = 'Iiro Krankka'
@@ -60,6 +60,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:' + rootProject.ext.supportLibraryVersion
     compile 'com.android.support:design:' + rootProject.ext.supportLibraryVersion
+
+    compile 'com.airbnb.android:lottie:2.1.0'
 
     testCompile 'junit:junit:' + rootProject.ext.junitVersion
 
