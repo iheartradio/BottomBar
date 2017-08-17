@@ -293,6 +293,10 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
         setItems(xmlRes, null);
     }
 
+    public void setItems(final @XmlRes List<Integer> xmlResList) {
+        setItems(xmlResList, null);
+    }
+
     /**
      * Set the item for the BottomBar from XML Resource with a default configuration
      * for each tab.
@@ -308,6 +312,19 @@ public class BottomBar extends LinearLayout implements View.OnClickListener, Vie
 
         TabParser parser = new TabParser(getContext(), defaultTabConfig, xmlRes);
         updateItems(parser.parseTabs());
+    }
+
+    public void setItems(@XmlRes List<Integer> xmlResList, BottomBarTab.Config defaultTabConfig) {
+        if (xmlResList.isEmpty()) {
+            throw new RuntimeException("No items specified for the BottomBar!");
+        }
+
+        if (defaultTabConfig == null) {
+            defaultTabConfig = getTabConfig();
+        }
+
+        TabParser parser = new TabParser(getContext(), defaultTabConfig, xmlResList);
+        updateItems(parser.parseTabsList());
     }
 
     private BottomBarTab.Config getTabConfig() {

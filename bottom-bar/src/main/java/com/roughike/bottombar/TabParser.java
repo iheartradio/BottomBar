@@ -61,7 +61,9 @@ class TabParser {
     private final BottomBarTab.Config defaultTabConfig;
 
     @NonNull
-    private final XmlResourceParser parser;
+    private XmlResourceParser parser;
+
+    private List<XmlResourceParser> parsers;
 
     @Nullable
     private List<BottomBarTab> tabs = null;
@@ -70,6 +72,15 @@ class TabParser {
         this.context = context;
         this.defaultTabConfig = defaultTabConfig;
         this.parser = context.getResources().getXml(tabsXmlResId);
+    }
+
+    TabParser(@NonNull Context context, @NonNull BottomBarTab.Config defaultTabConfig, @XmlRes List<Integer> tabsXmlResIds) {
+        this.context = context;
+        this.defaultTabConfig = defaultTabConfig;
+        parsers = new ArrayList<>();
+        for(Integer id : tabsXmlResIds) {
+            parsers.add(context.getResources().getXml(id));
+        }
     }
 
     @CheckResult
@@ -89,6 +100,31 @@ class TabParser {
             } catch (IOException | XmlPullParserException e) {
                 e.printStackTrace();
                 throw new TabParserException();
+            }
+        }
+
+        return tabs;
+    }
+
+    @CheckResult
+    @NonNull
+    public List<BottomBarTab> parseTabsList() {
+        if (tabs == null) {
+            tabs = new ArrayList<>(AVG_NUMBER_OF_TABS);
+            for(XmlResourceParser parser: parsers) {
+                try {
+                    int eventType;
+                    do {
+                        eventType = parser.next();
+                        if (eventType == XmlResourceParser.START_TAG && TAB_TAG.equals(parser.getName())) {
+                            BottomBarTab bottomBarTab = parseNewTab(parser, tabs.size());
+                            tabs.add(bottomBarTab);
+                        }
+                    } while (eventType != XmlResourceParser.END_DOCUMENT);
+                } catch (IOException | XmlPullParserException e) {
+                    e.printStackTrace();
+                    throw new TabParserException();
+                }
             }
         }
 
