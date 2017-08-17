@@ -246,7 +246,7 @@ public class BottomBarTab extends LinearLayout {
         return (ViewGroup) getParent();
     }
 
-    LottieAnimationView getIconView() {
+    public LottieAnimationView getIconView() {
         return iconView;
     }
 
